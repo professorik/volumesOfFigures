@@ -1,0 +1,41 @@
+!define BLANK ""
+C:\Users\Tony\Desktop\space\computing.obj : C:\Users\Tony\Desktop\space\comp&
+uting.for .AUTODEPEND
+ @C:
+ cd C:\Users\Tony\Desktop\space
+ wfc386 computing.for -d2 -q -dep
+
+C:\Users\Tony\Desktop\space\finput.obj : C:\Users\Tony\Desktop\space\finput.&
+for .AUTODEPEND
+ @C:
+ cd C:\Users\Tony\Desktop\space
+ wfc386 finput.for -d2 -q -dep
+
+C:\Users\Tony\Desktop\space\GEOM.obj : C:\Users\Tony\Desktop\space\GEOM.for &
+.AUTODEPEND
+ @C:
+ cd C:\Users\Tony\Desktop\space
+ wfc386 GEOM.for -d2 -q -dep
+
+C:\Users\Tony\Desktop\space\ui.obj : C:\Users\Tony\Desktop\space\ui.for .AUT&
+ODEPEND
+ @C:
+ cd C:\Users\Tony\Desktop\space
+ wfc386 ui.for -d2 -q -dep
+
+C:\Users\Tony\Desktop\space\space.exe : C:\Users\Tony\Desktop\space\computin&
+g.obj C:\Users\Tony\Desktop\space\finput.obj C:\Users\Tony\Desktop\space\GEO&
+M.obj C:\Users\Tony\Desktop\space\ui.obj .AUTODEPEND
+ @C:
+ cd C:\Users\Tony\Desktop\space
+ @%write space.lk1 FIL computing.obj,finput.obj,GEOM.obj,ui.obj
+ @%append space.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b space.imp 
+ @%append space.lk1 LIBR space.imp
+!endif
+!ifneq BLANK ""
+ @%append space.lk1 
+!endif
+ *wlink name space d all sys nt op m op maxe=25 op q op symf @space.lk1
+
